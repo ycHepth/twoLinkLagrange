@@ -50,7 +50,6 @@ I2 = [Ixx2,Ixy2,Ixz2;
 
   
 In = cat(3,I1,I2); 
-% why need tensor here?
 
 z0 = [0,0,1]';
 for k = 1:n
@@ -82,10 +81,15 @@ for k = 1:n
 end
 
 % ======================================================
-% calculate jacobian matrix
+%               calculate jacobian matrix
+% ======================================================
+% linkage index = 1
+% J_v = [J_v1_1,| 0]
 Jvc1 = simplify([cross(z0,(oc(1:3,1,1)-o0)),zeros(3,1)]);
 Jw1  = [z0,zeros(3,1)];
 
+% linkage index = 2
+% J_v = [J_v1_1,J_v2_1,| 0]
 Jvc2 = simplify([cross(z0,(oc(1:3,1,2)-o0)),cross(Z(:,:,1),(oc(1:3,1,2)-o(:,:,1)))]);
 Jw2  = [z0,Z(:,:,1)];
 
@@ -143,7 +147,7 @@ disp('torque output tau:');
 tau
 
 % ======================================================
-%            numerical calculation
+%            numerical simulation
 % ======================================================
 dats={alpha1,l1,lc1,m1,Ixx1,Iyy1,Izz1,...
       alpha2,l2,lc2,m2,Ixx2,Iyy2,Izz2};
