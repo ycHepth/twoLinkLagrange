@@ -1,0 +1,26 @@
+% test for 2-link model
+% method : lagrange methods
+
+clear all 
+clc
+
+syms q1 alpha1 l1 lc1 m1 Ixx1 Iyy1 Ixy1 Iyz1 Ixz1 real
+syms q2 alpha2 l2 lc2 m2 Ixx2 Iyy2 Ixy2 Iyz2 Ixz2 real
+syms dq1 dq2 real
+syms ddq1 ddq2 real
+
+% SDH parameters
+a1 = l1;
+a2 = l2;
+alpha1 = 0;
+alpha2 = 0;
+d1 = 0;
+d2 = 0;
+
+a = [a1,a2]';
+q = [q1,q2]';
+
+dq = [dq1,dq2];
+
+% calculate neighbor corrinate transformed matrix
+
